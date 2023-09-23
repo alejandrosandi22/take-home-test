@@ -1,3 +1,9 @@
+import Nav from '@/components/Nav';
+
 export default function Home() {
-  return <main className='text-green-300'>Text</main>;
+  return (
+    <main className='bg-primary h-screen'>
+      <Nav />
+    </main>
+  );
 }
