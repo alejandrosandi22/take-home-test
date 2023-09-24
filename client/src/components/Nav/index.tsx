@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 export default function Nav() {
   return (
-    <header className='w-full px-5 bg-primary border-b border-b-gray-500 h-20'>
-      <nav className='w-full max-w-screen-xl mx-auto flex gap-3 items-center h-full'>
+    <header className='w-full px-10 bg-primary border-b border-b-gray-500 h-20'>
+      <nav className='w-full flex gap-3 items-center h-full'>
         <Image
           src=''
           alt=''
