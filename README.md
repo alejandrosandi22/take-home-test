@@ -57,6 +57,28 @@ yarn dev
 ```
 `Your server will run on http://localhost:3001, and your client will run on http://localhost:3000.`
 
+## Commit Guidelines
+
+Commit Message Guidelines
+
+```bash
+git commit -m "build: added new dependencies for dev"
+```
+
+When contributing to this project, please follow these commit message guidelines:
+
+1. **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+2. **ci**: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+3. **docs**: Documentation only changes
+4. **feat**: A new feature
+5. **fix**: A bug fix
+6. **perf**: A code change that improves performance
+7. **refactor**: A code change that neither fixes a bug nor adds a feature
+8. **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+9. **test**: Adding missing tests or correcting existing tests
+10. **config** Changes to the project configuration files
+
+
 ## Author
 
 - [@alejandrosandi22](https://www.github.com/alejandrosandi22)
