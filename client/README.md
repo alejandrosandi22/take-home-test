@@ -8,7 +8,7 @@ Follow these steps to set up the project locally:
 
 ```bash
 git clone <repository_url.git>
-cd task-home-test/client
+cd take-home-test/client
 ```
 
 2. Install the dependencies using yarn:

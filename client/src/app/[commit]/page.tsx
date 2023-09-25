@@ -3,7 +3,7 @@ import { getSingleCommitService } from '@/services/Repos';
 import Link from 'next/link';
 
 const GITHUB_USERNAME = 'alejandrosandi22';
-const GITHUB_REPO_NAME = 'task-home-test';
+const GITHUB_REPO_NAME = 'take-home-test';
 
 async function getSingleCommit(sha: string) {
   return await getSingleCommitService(GITHUB_USERNAME, GITHUB_REPO_NAME, sha);

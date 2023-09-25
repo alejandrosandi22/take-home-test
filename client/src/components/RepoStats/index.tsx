@@ -1,7 +1,7 @@
 import { getSingleRepoService } from '@/services/Repos';
 
 const GITHUB_USERNAME = 'alejandrosandi22';
-const GITHUB_REPO_NAME = 'task-home-test';
+const GITHUB_REPO_NAME = 'take-home-test';
 
 async function getSingleRepo() {
   return await getSingleRepoService(GITHUB_USERNAME, GITHUB_REPO_NAME);
@@ -11,8 +11,8 @@ export default async function RepoStats() {
   const data = await getSingleRepo();
 
   return (
-    <div className='pb-10 text-gray-50 flex flex-wrap gap-x-10 gap-y-2 w-full'>
-      <div className='flex gap-2 font-medium items-center bg-primary-hover rounded-2xl py-2 px-3'>
+    <div className='flex w-full flex-wrap gap-x-10 gap-y-2 pb-10 text-gray-50'>
+      <div className='flex items-center gap-2 rounded-2xl bg-primary-hover px-3 py-2 font-medium'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           className='icon icon-tabler icon-tabler-eye'
@@ -32,7 +32,7 @@ export default async function RepoStats() {
         {data.subscribers_count}
         <span className='font-normal'>watchers</span>
       </div>
-      <div className='flex gap-2 font-medium items-center bg-primary-hover rounded-2xl py-2 px-3'>
+      <div className='flex items-center gap-2 rounded-2xl bg-primary-hover px-3 py-2 font-medium'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           className='icon icon-tabler icon-tabler-star'
@@ -51,7 +51,7 @@ export default async function RepoStats() {
         {data.stargazers_count}
         <span className='font-normal'>stars</span>
       </div>
-      <div className='flex gap-2 font-medium items-center bg-primary-hover rounded-2xl py-2 px-3'>
+      <div className='flex items-center gap-2 rounded-2xl bg-primary-hover px-3 py-2 font-medium'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           className='icon icon-tabler icon-tabler-git-fork text-gray-50'

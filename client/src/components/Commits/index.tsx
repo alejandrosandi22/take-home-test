@@ -6,7 +6,7 @@ import CommitsList from '../CommitsList';
 import Filters from '../Filters';
 
 const GITHUB_USERNAME = 'alejandrosandi22';
-const GITHUB_REPO_NAME = 'task-home-test';
+const GITHUB_REPO_NAME = 'take-home-test';
 
 export default function Commits() {
   const { data } = useQuery('branchFromRepo', async () => {

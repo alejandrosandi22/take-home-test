@@ -3,7 +3,7 @@ import Link from 'next/link';
 import UserDropdown from '../UserDropdown';
 
 const GITHUB_USERNAME = 'alejandrosandi22';
-const GITHUB_REPO_NAME = 'task-home-test';
+const GITHUB_REPO_NAME = 'take-home-test';
 
 async function getUser() {
   return await getUserService(GITHUB_USERNAME);

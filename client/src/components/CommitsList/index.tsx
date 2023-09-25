@@ -8,7 +8,7 @@ import { useQuery } from 'react-query';
 import CommitCard from '../CommitsCard';
 
 const GITHUB_USERNAME = 'alejandrosandi22';
-const GITHUB_REPO_NAME = 'task-home-test';
+const GITHUB_REPO_NAME = 'take-home-test';
 
 export default function CommitsList() {
   const branch = useAppSelector((state) => state.branch);
