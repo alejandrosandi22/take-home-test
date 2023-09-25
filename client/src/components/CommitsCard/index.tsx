@@ -1,18 +1,31 @@
 'use client';
 
-export default function CommitCard() {
+import moment from 'moment';
+import Image from 'next/image';
+import Link from 'next/link';
+
+export default function CommitCard({ author, commit, sha }: GithubCommit) {
   return (
-    <button className='rounded-2xl border text-gray-50 border-gray-50 w-full py-5 px-8 space-y-2 hover:bg-primary-hover'>
-      <div className='flex justify-between'>
+    <Link
+      href={sha}
+      className='w-full space-y-2 rounded-2xl border border-gray-50 px-8 py-5 text-start text-gray-50 hover:bg-primary-hover'
+    >
+      <div className='flex flex-wrap justify-between'>
         <div className='flex items-end gap-2'>
-          <h2 className='text-xl font-medium'>[Commit]</h2>
-          <h5 className='text-base'>[Author]</h5>
+          <h2 className='text-base font-medium'>{commit.message}</h2>
         </div>
-        <h6 className='text-lg font-medium'>[id]</h6>
+        <h5 className='text-base'>{moment(commit.author.date).format('L')}</h5>
       </div>
-      <div>
-        <p className='text-base text-start'>[Message]</p>
+      <div className='flex gap-2'>
+        <Image
+          src={author.avatar_url}
+          alt={`${author.login} avatar`}
+          width={25}
+          height={25}
+          className='rounded-full'
+        />
+        <h6 className='text-base'>@{author.login}</h6>
       </div>
-    </button>
+    </Link>
   );
 }

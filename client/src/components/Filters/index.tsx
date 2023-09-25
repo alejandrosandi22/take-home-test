@@ -1,31 +1,38 @@
 'use client';
 
+import { useAppDispatch } from '@/store/hooks';
+import { setBranch } from '@/store/reducers/branchReducer';
 import { Select, SelectItem } from '@nextui-org/react';
 
-const branches = [
-  {
-    name: 'All branches',
-    sha: 'value1',
-  },
-  {
-    name: 'main',
-    sha: 'value2',
-  },
-];
+interface FiltersProps {
+  data: GithubBranch[] | undefined;
+}
 
-export default function Filters() {
+export default function Filters({ data }: FiltersProps) {
+  const dispatch = useAppDispatch();
   return (
-    <div className='w-36'>
+    <div>
       <Select
-        placeholder='All branches'
+        placeholder='main'
         labelPlacement='outside'
-        className='w-36'
+        className='w-44'
+        onChange={(e) => {
+          dispatch(
+            setBranch({
+              name: e.target.value,
+            }),
+          );
+        }}
       >
-        {branches.map((branch) => (
-          <SelectItem key={branch.sha} value={branch.sha}>
-            {branch.name}
-          </SelectItem>
-        ))}
+        {data ? (
+          data.map((branch) => (
+            <SelectItem value={branch.name} key={branch.name}>
+              {branch.name}
+            </SelectItem>
+          ))
+        ) : (
+          <SelectItem key={'main'} value={'main'}></SelectItem>
+        )}
       </Select>
     </div>
   );
