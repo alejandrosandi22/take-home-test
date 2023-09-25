@@ -1,17 +1,34 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { RepoService } from './repos.service';
 
 @Controller('repos')
 export class RepoController {
   constructor(private repoService: RepoService) {}
 
-  @Get(':owner/:repo')
-  async getBranchesFromRepo(@Param() params) {
-    const data = await this.repoService.getBranchesFromRepo(params);
+  @Get(':owner')
+  async getReposByUser(@Param() params) {
+    return await this.repoService.getReposByUser(params);
+  }
 
-    return data.map((data) => ({
-      name: data.name,
-      sha: data.commit.sha,
+  @Get(':owner/:repo')
+  async getSingleRepo(@Param() params) {
+    return this.repoService.getSingleRepo(params);
+  }
+
+  @Get(':owner/:repo/branches')
+  async getBranchesByRepo(@Param() params) {
+    const response = await this.repoService.getBranchesByRepo(params);
+    response.sort((a, b) => {
+      if (a.name === 'main' && b.name !== 'main') {
+        return -1;
+      } else if (a.name !== 'main' && b.name === 'main') {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    return response.map((branch) => ({
+      name: branch.name,
     }));
   }
 
@@ -20,12 +37,20 @@ export class RepoController {
     return this.repoService.getAllCommits(params);
   }
 
-  @Get(':owner/:repo/commits/:commit_sha')
-  getCommitsByBranch(@Param() params) {
-    return this.repoService.getCommitsByBranch(params);
+  @Get(':owner/:repo/branch/commits')
+  getCommitsByBranch(
+    @Param('owner') owner: string,
+    @Param('repo') repo: string,
+    @Query('branch') branch: string,
+  ) {
+    return this.repoService.getCommitsByBranch({
+      owner,
+      repo,
+      branch,
+    });
   }
 
-  @Get(':owner/:repo/commit/:commit_sha')
+  @Get(':owner/:repo/branch/commits/:sha')
   getSingleCommit(@Param() params) {
     return this.repoService.getSingleCommit(params);
   }

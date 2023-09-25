@@ -1,21 +1,24 @@
-import CommitCard from '../CommitsCard';
+'use client';
+
+import { getBranchesByRepoService } from '@/services/Repos';
+import { useQuery } from 'react-query';
+import CommitsList from '../CommitsList';
 import Filters from '../Filters';
 
+const GITHUB_USERNAME = 'alejandrosandi22';
+const GITHUB_REPO_NAME = 'task-home-test';
+
 export default function Commits() {
+  const { data } = useQuery('branchFromRepo', async () => {
+    return await getBranchesByRepoService(GITHUB_USERNAME, GITHUB_REPO_NAME);
+  });
   return (
-    <section className='w-full h-full'>
-      <div className='w-full flex items-center justify-between'>
-        <h2 className='text-gray-50 text-2xl font-semibold'>Commits history</h2>
-        <Filters />
+    <section className='h-full w-full'>
+      <div className='flex w-full flex-wrap items-center justify-between'>
+        <h2 className='text-2xl font-semibold text-gray-50'>Commits history</h2>
+        <Filters data={data} />
       </div>
-      <div className='py-5 space-y-3 h-full'>
-        <CommitCard />
-        <CommitCard />
-        <CommitCard />
-        <CommitCard />
-        <CommitCard />
-        <CommitCard />
-      </div>
+      <CommitsList />
     </section>
   );
 }

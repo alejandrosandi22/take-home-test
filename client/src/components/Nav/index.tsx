@@ -13,8 +13,8 @@ export default async function Nav() {
   const data = await getUser();
 
   return (
-    <header className='w-full px-10 bg-primary border-b border-b-gray-500 h-20'>
-      <nav className='w-full flex gap-3 items-center h-full'>
+    <header className='bg-primary-color h-[80px] w-full border-b border-b-gray-500 px-10'>
+      <nav className='flex h-full w-full items-center gap-3'>
         <div>
           {data && (
             <UserDropdown
@@ -25,11 +25,11 @@ export default async function Nav() {
             />
           )}
         </div>
-        <div className='h-7 w-px bg-gray-500 rotate-12' />
+        <div className='h-7 w-px rotate-12 bg-gray-500' />
         <Link
           href={`https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}`}
           target='_blank'
-          className='text-gray-50 hover:bg-primary-hover py-2 px-3 rounded-xl'
+          className='rounded-xl px-3 py-2 text-gray-50 hover:bg-primary-hover'
         >
           {GITHUB_REPO_NAME}
         </Link>
